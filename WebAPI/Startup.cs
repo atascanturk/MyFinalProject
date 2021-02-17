@@ -33,10 +33,12 @@ namespace WebAPI
             //AutoFac, Ninject,CastleWindsor,StructureMap,LightInject,DryInject ---> IoC Container
             //AOP
             services.AddControllers();
-            services.AddSingleton<IProductService, ProductManager>();
-            services.AddSingleton<IProductDal,EfProductDal>();
+            //services.AddSingleton<IProductService, ProductManager>();
+            //services.AddSingleton<IProductDal,EfProductDal>();
             //Singleton tüm bellekte bir adet Product Manager oluþturur. Ýçerisinde data tutulmuyorsa bu kullanýlýr.
             //Data varsa AddScoped ya da AddTransient. Ödev olarak verilecek.
+
+
 
         }
 
