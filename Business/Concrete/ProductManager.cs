@@ -61,10 +61,10 @@ namespace Business.Concrete
         }
 
         [TransactionScopeAspect]
-        //public IResult AddTransactionalTest(Product product)
-        //{
-            
-        //}
+        public IResult AddTransactionalTest(Product product)
+        {
+            return new SuccessResult();
+        }
 
         [CacheAspect]
         public IDataResult<List<Product>> GetAll()
