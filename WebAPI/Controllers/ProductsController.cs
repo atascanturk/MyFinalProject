@@ -29,7 +29,7 @@ namespace WebAPI.Controllers
         [HttpGet ("getall")]
         public IActionResult GetAll()
         {
-            Thread.Sleep(5000);
+            
             var result = _productService.GetAll();
 
             if (result.Success)
@@ -63,7 +63,39 @@ namespace WebAPI.Controllers
 
             if (result.Success) 
             {
-                return Ok(result.Data);
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+
+        }
+
+
+        [HttpGet("getbycategory")]
+        public IActionResult GetByCategory(int categoryId)
+        {
+
+            var result = _productService.GetAllByCategoryId(categoryId);
+
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+
+            return BadRequest(result);
+
+        }
+
+
+        [HttpGet("getproductdetails")]
+        public IActionResult GetProductDetails()
+        {
+
+            var result = _productService.GetProductDetails();
+
+            if (result.Success)
+            {
+                return Ok(result);
             }
 
             return BadRequest(result);
