@@ -34,7 +34,7 @@ namespace Business.Concrete
         }
 
         //Claim
-        //[SecuredOperation("admin,editor,product.add")]
+        [SecuredOperation("admin,editor,product.add")]
         [ValidationAspect(typeof(ProductValidator))] //ValidationTool.Validate(new ProductValidator(), product);
         [CacheRemoveAspect("IProductService.Get")]
         public IResult Add(Product product)
@@ -99,10 +99,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductDetails(), Messages.ProductListed);
         }
 
-        private IResult CheckIfProductCountOfCategoryCorrect(int CategoryId) //Aynı kategoride 10'dan fazla ürün olamaz.
+        private IResult CheckIfProductCountOfCategoryCorrect(int CategoryId) //Aynı kategoride 20'dan fazla ürün olamaz.
         {
             var result = _productDal.GetAll(p => p.CategoryId == CategoryId).Count;
-            if (result > 10)
+            if (result > 20)
             {
                 return new ErrorResult(Messages.ProductCountOfCategoryError);
 
